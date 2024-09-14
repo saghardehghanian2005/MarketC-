@@ -1,5 +1,6 @@
+using DotNetHW2;
 using Service;
-using Xunit.Sdk;
+using Xunit;
 
 namespace ServiceTest;
 
@@ -13,8 +14,24 @@ public class ItemServiceTest
     }
 
     [Fact]
-    public void SampleTest()
+    public void AddTest()
     {
-        // write test for _sut functions !
+        string s = "You aren't admin";
+        string r = _sut.Add(new Item("pen",15),new User("Saghar","45","Adi",300,new List<Item>()));
+        Assert.Equal(r,s);
+    }
+    [Fact]
+    public void RemoveTest()
+    {
+        string s = "You aren't admin";
+        string r = _sut.Remove(new Item("pen",15),new User("Saghar","45","Adi",300,new List<Item>()));
+        Assert.Equal(r,s);
+    }
+    [Fact]
+    public void BuyItemTest()
+    {
+        string s = "Your money isn't enough";
+        string r = _sut.BuyItem(new Item("pen",15),new User("Saghar","45","Adi",0,new List<Item>()));
+        Assert.Equal(r,s);
     }
 }

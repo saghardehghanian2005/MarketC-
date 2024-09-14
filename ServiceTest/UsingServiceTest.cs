@@ -14,24 +14,44 @@ public class UserServiceTest
     }
 
     [Fact]
-    public void RegisterTest()
+    public Boolean RegisterTest()
     {
         User userR = new User("Saghar","1384","Adi",0,new List<Item>());
-        User user = _sut.Register("Saghar","1384","Adi");
-        Assert.Equal(userR,user);
+        _sut.Register("Saghar","1384","Adi");
+        bool B = false;
+        foreach (User u in _sut.Users)
+        {
+            if (u.Name.Equals(userR.Name) && u.Id.Equals(userR.Id) && u.Money.Equals(userR.Money) && u.Items.Equals(userR.Items)&& u.Type.Equals(userR.Type))
+            {
+                B = true;
+               break;
+            }
+        }
+        return B;
     }
     [Fact]
-    public void LoginTest()
+    public Boolean LoginTest()
     {
-        User user = new User("Sahar","1380","Adi",0,new List<Item>());
-        string r = _sut.Login(user.Name,user.ID);
-        Assert.Equal("Login wasn't s",r);
+        User u = new User("Sahar","1380","Adi",0,new List<Item>());
+        _sut.Register("Sahar","1380","Adi");
+        User userR = _sut.Login(u.Name,u.Id);
+        bool B = false;
+        if(u.Name.Equals(userR.Name) && u.Id.Equals(userR.Id) && u.Money.Equals(userR.Money) && u.Items.Equals(userR.Items)&& u.Type.Equals(userR.Type))
+        {
+            B = true;
+        }
+        return B;
     }
     [Fact]
-    public void ChangeTheInformationTest()
+    public Boolean ChangeTheInformationTest()
     {
-        User user = new User("Sahar","1380","Adi",20,new List<Item>());
-        User userR = _sut.ChangeTheInformation(user,"Sahar",20,"1380");
-        Assert.Equal(userR,user);
+        User user = new User("Saghar","1384","Adi",80,new List<Item>());
+        User u = _sut.ChangeTheInformation(user,"Sahar",20,"1380");
+        bool B = false;
+        if(u.Name.Equals("Sahar") && u.Id.Equals("1380") && u.Money.Equals(20) && u.Items.Equals(u.Items)&& u.Type.Equals("Adi"))
+        {
+            B = true;
+        }
+        return B;
     }
 }

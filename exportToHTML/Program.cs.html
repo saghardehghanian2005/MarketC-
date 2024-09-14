@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Program.cs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #6c95eb;}
+.s1 { color: #d0d0d0;}
+.s2 { color: #bdbdbd;}
+.s3 { color: #c9a26d;}
+.s4 { color: #ed94c0;}
+</style>
+</head>
+<body bgcolor="#262626">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Program.cs</font>
+</center></td></tr></table>
+<pre><span class="s0">using </span><span class="s1">DotNetHW2</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">Service</span><span class="s2">;</span>
+
+<span class="s0">class </span><span class="s1">Program</span>
+<span class="s2">{</span>
+    <span class="s0">static void </span><span class="s1">Main</span><span class="s2">(</span><span class="s0">string</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">)</span>
+    <span class="s2">{</span>
+        <span class="s1">User admin </span><span class="s2">= </span><span class="s0">new </span><span class="s1">User</span><span class="s2">(</span><span class="s3">&quot;Saghar&quot;</span><span class="s2">,</span><span class="s3">&quot;1384&quot;</span><span class="s2">,</span><span class="s3">&quot;Admin&quot;</span><span class="s2">,</span><span class="s4">200</span><span class="s2">,</span><span class="s0">new </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Item</span><span class="s2">&gt;());</span>
+        <span class="s1">User user</span><span class="s2">;</span>
+        <span class="s1">UserService userService </span><span class="s2">= </span><span class="s0">new </span><span class="s1">UserService</span><span class="s2">();</span>
+        <span class="s1">Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Please enter a number of dastor you want/n1.Register/n2.Login/n&quot;</span><span class="s2">);</span>
+        <span class="s0">string </span><span class="s1">dastor </span><span class="s2">= </span><span class="s1">Console</span><span class="s2">.</span><span class="s1">ReadLine</span><span class="s2">();</span>
+        <span class="s0">while </span><span class="s2">(</span><span class="s1">dastor</span><span class="s2">!=</span><span class="s3">&quot;exit&quot;</span><span class="s2">)</span>
+        <span class="s2">{</span>
+            <span class="s0">switch </span><span class="s2">(</span><span class="s1">dastor</span><span class="s2">)</span>
+            <span class="s2">{</span>
+                <span class="s0">case </span><span class="s3">&quot;1&quot;</span><span class="s1">: Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Please enter your name and your ID&quot;</span><span class="s2">);</span>
+                    <span class="s0">string</span><span class="s2">[] </span><span class="s1">dastor1</span><span class="s2">= </span><span class="s1">Console</span><span class="s2">.</span><span class="s1">ReadLine</span><span class="s2">().</span><span class="s1">Split</span><span class="s2">(</span><span class="s3">' '</span><span class="s2">);</span>
+                    <span class="s1">user </span><span class="s2">= </span><span class="s1">userService</span><span class="s2">.</span><span class="s1">Register</span><span class="s2">(</span><span class="s1">dastor1</span><span class="s2">[</span><span class="s4">0</span><span class="s2">],</span><span class="s1">dastor1</span><span class="s2">[</span><span class="s4">1</span><span class="s2">],</span><span class="s3">&quot;Adi&quot;</span><span class="s2">);</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">user</span><span class="s2">!=</span><span class="s0">null</span><span class="s2">)</span>
+                    <span class="s2">{</span>
+                        <span class="s1">Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Please enter a number of dastor you want/n1.Login/n2.Change the information/n&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">else</span>
+                    <span class="s2">{</span>
+                        <span class="s1">Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Error!/nPlease enter a number of dastor you want/n1.Login/n&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">&quot;2&quot;</span><span class="s1">:Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Please enter your name and your ID&quot;</span><span class="s2">);</span>
+                    <span class="s0">string</span><span class="s2">[] </span><span class="s1">dastor2</span><span class="s2">= </span><span class="s1">Console</span><span class="s2">.</span><span class="s1">ReadLine</span><span class="s2">().</span><span class="s1">Split</span><span class="s2">(</span><span class="s3">' '</span><span class="s2">);</span>
+                    <span class="s1">user </span><span class="s2">= </span><span class="s1">userService</span><span class="s2">.</span><span class="s1">Login</span><span class="s2">(</span><span class="s1">dastor2</span><span class="s2">[</span><span class="s4">0</span><span class="s2">],</span><span class="s1">dastor2</span><span class="s2">[</span><span class="s4">1</span><span class="s2">]);</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">user</span><span class="s2">!=</span><span class="s0">null</span><span class="s2">)</span>
+                    <span class="s2">{</span>
+                        <span class="s1">Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Please enter a number of dastor you want/n1.Change the information/n&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">else</span>
+                    <span class="s2">{</span>
+                        <span class="s1">Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Error!/nPlease enter a number of dastor you want/n1.Login/n2.Change the information/n3.Add Item/n4.Remove Item/n5.Buy Item&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">default</span><span class="s1">: Console</span><span class="s2">.</span><span class="s1">WriteLine</span><span class="s2">(</span><span class="s3">&quot;Please enter a number of dastor you want/n1.Register/n2.Login/n&quot;</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
