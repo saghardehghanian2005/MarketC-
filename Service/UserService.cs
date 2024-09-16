@@ -2,7 +2,7 @@
 
 namespace Service;
 
-public class UserService
+public class UserService : IUserService
 {
     private List<User> users = new List<User>();
     public List<User> Users { get; set; } 

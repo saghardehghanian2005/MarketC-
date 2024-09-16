@@ -2,7 +2,7 @@
 
 namespace Service;
 
-public class ItemService
+public class ItemService : IItemService
 {
     private List<Item> items = new List<Item>();
     public List<Item> Items { get; set; } 
@@ -35,15 +35,24 @@ public class ItemService
     }
     public string BuyItem(Item item,User user)
     {
-        if (item.Price<=user.Money)
+        string s = "Error";
+        foreach (Item i in Items)
         {
-            user.Items.Add(item);
-            Items = items;
-            return "Success";   
+            if (i.Name.Equals(item.Name) && i.Price.Equals(item.Price))
+            {
+                if (item.Price<=user.Money)
+                {
+                    user.Items.Add(item);
+                    user.Money -= item.Price;
+                    s =  "Success";   
+                }
+                else
+                {
+                    s = "Your money isn't enough";
+                }   
+                break;
+            }
         }
-        else
-        {
-            return "Your money isn't enough";
-        }
+        return s;
     }
 }
