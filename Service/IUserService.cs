@@ -1,6 +1,6 @@
 ﻿namespace Service;
 
-public interface IItemService
+public interface IUserService
 {
     
 }
